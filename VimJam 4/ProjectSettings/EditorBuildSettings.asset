@@ -7,5 +7,11 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/World1.unity
+    guid: dc13185f0f3709f4e93647faca24a869
+  - enabled: 1
+    path: Assets/Scenes/World2.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/World3.unity
+    guid: 2016d7ea8ed09fb4eaddcf0161aa3f76
   m_configObjects: {}
