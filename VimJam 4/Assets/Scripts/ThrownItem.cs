@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class ThrownItem : MonoBehaviour
 {
+    public GameObject floorItemPrefab;
+
     public Item item;
 
     public Vector3 direction;
+
+    public float speed = 10.0f;
 
     private float distance;
 
@@ -22,11 +26,17 @@ public class ThrownItem : MonoBehaviour
     void FixedUpdate()
     {
         if (arc >= 2) {
-            Destroy(gameObject);
+            Land();
         } else {
-            transform.position += direction * Time.fixedDeltaTime * 5;
-            arc += Time.fixedDeltaTime / distance * 10;
+            transform.position += direction * Time.fixedDeltaTime * speed;
+            arc += Time.fixedDeltaTime / distance * speed * 2;
             transform.localScale = Vector3.one * (2 - Mathf.Pow(arc - 1, 2));
         }
+    }
+
+    void Land() {
+        GameObject floorItem = Instantiate(floorItemPrefab, transform.position, Quaternion.identity);
+        floorItem.GetComponent<FloorItem>().item = item;
+        Destroy(gameObject);
     }
 }
