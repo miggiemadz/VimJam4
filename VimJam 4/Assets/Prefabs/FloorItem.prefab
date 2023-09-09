@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 7214897077121600364}
   - component: {fileID: 1296558803257346049}
   - component: {fileID: -8069466184573243102}
+  - component: {fileID: 1440941535958988630}
   m_Layer: 0
   m_Name: FloorItem
   m_TagString: Untagged
@@ -204,3 +205,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
+--- !u!114 &1440941535958988630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4562062273220050600}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 387db58c50b9a94448a25bf5ee0f3ffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundWavePrefab: {fileID: 2939776817252996227, guid: ce0f82f08511bcc4f8c5d0acc85d0689, type: 3}
