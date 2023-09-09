@@ -1,11 +1,11 @@
 public enum ItemType {
-	BoomBox,
-	Bottle,
 	Rock,
+	Bottle,
+	BoomBox,
 }
 
 public class Item {
-	ItemType type;
+	public ItemType type;
 
 	public Item(ItemType type) {
 		this.type = type;
