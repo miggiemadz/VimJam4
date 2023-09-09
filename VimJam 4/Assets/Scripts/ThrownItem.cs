@@ -10,7 +10,7 @@ public class ThrownItem : MonoBehaviour
 
     public Vector3 direction;
 
-    public float speed = 10.0f;
+    public float speed = 25.0f;
 
     private float distance;
 
