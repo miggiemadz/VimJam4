@@ -16,7 +16,7 @@ public class PlayerBehavior : MonoBehaviour
 
     public GameObject thrownItemPrefab;
 
-    public Item? item;
+    public Item? item = new Item(ItemType.Rock);
 
     Vector2 movement;
 
@@ -40,7 +40,15 @@ public class PlayerBehavior : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1")) {
             if (item == null) {
-                item = new Item(ItemType.Rock);
+                Collider[] itemsNearby = Physics.OverlapSphere(transform.position, 10.0f, ~0);
+                Debug.Log(itemsNearby.Length);
+                foreach(Collider collider in itemsNearby) {
+                    if (collider.gameObject.TryGetComponent<FloorItem>(out var floorItem)) {
+                        item = floorItem.item;
+                        Destroy(collider.gameObject);
+                        break;
+                    }
+                }
             } else {
                 Vector3 thrownItemDirection = cursor.transform.position - transform.position;
                 GameObject thrownItem = Instantiate(thrownItemPrefab, transform.position, Quaternion.identity);
