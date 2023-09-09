@@ -205,4 +205,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floorItemPrefab: {fileID: 4562062273220050600, guid: d345d11ad068bab45bb7f8c8ceb23c57, type: 3}
   direction: {x: 0, y: 0, z: 0}
-  speed: 10
+  speed: 25

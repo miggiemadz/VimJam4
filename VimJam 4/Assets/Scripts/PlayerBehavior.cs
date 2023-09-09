@@ -10,6 +10,8 @@ public class PlayerBehavior : MonoBehaviour
 
     public float moveSpeed;
 
+    public float pickUpDistance = 1.0f;
+
     public GameObject cursor;
 
     public Camera mainCamera;
@@ -38,18 +40,24 @@ public class PlayerBehavior : MonoBehaviour
         mousePos.z = 0;
         cursor.transform.position = mousePos;
 
-        if (Input.GetButtonDown("Fire1")) {
-            if (item == null) {
-                Collider[] itemsNearby = Physics.OverlapSphere(transform.position, 10.0f, ~0);
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (item == null)
+            {
+                Collider2D[] itemsNearby = Physics2D.OverlapCircleAll(transform.position, pickUpDistance);
                 Debug.Log(itemsNearby.Length);
-                foreach(Collider collider in itemsNearby) {
-                    if (collider.gameObject.TryGetComponent<FloorItem>(out var floorItem)) {
+                foreach (Collider2D collider in itemsNearby)
+                {
+                    if (collider.gameObject.TryGetComponent<FloorItem>(out var floorItem))
+                    {
                         item = floorItem.item;
                         Destroy(collider.gameObject);
                         break;
                     }
                 }
-            } else {
+            }
+            else
+            {
                 Vector3 thrownItemDirection = cursor.transform.position - transform.position;
                 GameObject thrownItem = Instantiate(thrownItemPrefab, transform.position, Quaternion.identity);
                 ThrownItem thrownItemScript = thrownItem.GetComponent<ThrownItem>();
