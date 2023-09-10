@@ -36,7 +36,11 @@ public class ThrownItem : MonoBehaviour
         {
             transform.position += direction * Time.fixedDeltaTime * speed;
             arc += Time.fixedDeltaTime / distance * speed * 2;
-            transform.localScale = Vector3.one * (2 - Mathf.Pow(arc - 1, 2));
+            transform.localScale = Vector3.one * (3 - 2 * Mathf.Pow(arc - 1, 2));
+            if (item.type == ItemType.ExplodingCat)
+            {
+                transform.Rotate(new Vector3(0, 0, 20));
+            }
         }
     }
 

@@ -19,7 +19,7 @@ public class PlayerBehavior : MonoBehaviour
     public Camera mainCamera;
     public GameObject thrownItemPrefab;
 
-    public Item? item = new Item(ItemType.Rock);
+    public Item? item = new Item(ItemType.ExplodingCat);
 
     Vector2 movement;
 
