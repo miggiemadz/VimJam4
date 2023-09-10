@@ -694,7 +694,7 @@ PrefabInstance:
       objectReference: {fileID: 1591254379}
     - target: {fileID: 693050847528438831, guid: 066ccc62e033cd548a3ad1269739f321, type: 3}
       propertyPath: spawnCooldown
-      value: 4.59
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 693050847528438831, guid: 066ccc62e033cd548a3ad1269739f321, type: 3}
       propertyPath: spawnLocations.Array.size
