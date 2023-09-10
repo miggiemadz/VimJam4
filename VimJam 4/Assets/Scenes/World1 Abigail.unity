@@ -223,6 +223,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1440941535958988630, guid: d345d11ad068bab45bb7f8c8ceb23c57, type: 3}
+      propertyPath: boomboxOn
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4562062273220050600, guid: d345d11ad068bab45bb7f8c8ceb23c57, type: 3}
       propertyPath: m_Name
       value: BoomBox
@@ -585,6 +589,7 @@ PrefabInstance:
       propertyPath: boomBox
       value: 
       objectReference: {fileID: 1399212712}
+      objectReference: {fileID: 1483143880}
     - target: {fileID: 4610781721448309849, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
       propertyPath: mainCamera
       value: 
@@ -702,7 +707,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7956901511298003414, guid: d09918fe4ca9790468ff2675aadd19e1, type: 3}
   m_PrefabInstance: {fileID: 961862861}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1399212712 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1440941535958988630, guid: d345d11ad068bab45bb7f8c8ceb23c57, type: 3}
   m_PrefabInstance: {fileID: 471006576}
@@ -717,6 +721,11 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1113696354587288129, guid: c8e7ee152187bb94692bcbb171e3aac9, type: 3}
   m_PrefabInstance: {fileID: 3820499173461483481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1853325333 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4562062273220050600, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
+  m_PrefabInstance: {fileID: 1078906058}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2079062337
 GameObject:
@@ -846,6 +855,11 @@ PrefabInstance:
       propertyPath: enemySpeed
       value: 3
       objectReference: {fileID: 0}
+      objectReference: {fileID: 1853325333}
+    - target: {fileID: 2040764861306365725, guid: 6a6400824a9be0b4ba1f00c2a0f1d121, type: 3}
+      propertyPath: boomBox
+      value: 
+      objectReference: {fileID: 1483143880}
     - target: {fileID: 2731709522519190009, guid: 6a6400824a9be0b4ba1f00c2a0f1d121, type: 3}
       propertyPath: m_Name
       value: PoliceF
@@ -919,6 +933,11 @@ PrefabInstance:
       propertyPath: enemySpeed
       value: 3
       objectReference: {fileID: 0}
+      objectReference: {fileID: 1853325333}
+    - target: {fileID: 8915203265870291413, guid: de417fa08fd0e014c960d2276d4e86c0, type: 3}
+      propertyPath: boomBox
+      value: 
+      objectReference: {fileID: 1483143880}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
