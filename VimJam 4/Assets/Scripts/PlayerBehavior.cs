@@ -20,6 +20,7 @@ public class PlayerBehavior : MonoBehaviour
     public GameObject thrownItemPrefab;
 
     public bool boomBoxOn;
+    public bool isArrested;
 
     public Item? item = new(ItemType.ExplodingCat);
 
@@ -47,6 +48,11 @@ public class PlayerBehavior : MonoBehaviour
         Vector3 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
         cursor.transform.position = mousePos;
+
+        if (isArrested)
+        {
+            return;
+        }
 
         if (Input.GetButtonDown("Fire1"))
         {
@@ -78,6 +84,10 @@ public class PlayerBehavior : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (isArrested)
+        {
+            return;
+        }
         movement.Normalize();
         rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
         boomBoxOnandOff();

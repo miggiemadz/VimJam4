@@ -13,16 +13,10 @@ public class PoliceBehavior : MonoBehaviour
     private float playerDistance;
     private float boomBoxDistance;
 
-    public float boomBoxDestroyTimer;
+    float boomBoxDestroyTimer = 2;
+    float playerArrestTimer = 2;
 
     public float sightRange;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        boomBoxDestroyTimer = 2;
-    }
 
     // Update is called once per frame
     void Update()
@@ -50,15 +44,25 @@ public class PoliceBehavior : MonoBehaviour
         {
             boomBoxDestroyTimer -= Time.fixedDeltaTime; 
             
-            if(boomBoxDestroyTimer < 0)
+            if(boomBoxDestroyTimer <= 0)
             {
                 boomBox.SetActive(false);
                 player.boomBoxOn = false;
             }
         }
 
+        if (playerDistance <= 0.5)
+        {
+            playerArrestTimer -= Time.fixedDeltaTime;
 
+            if (playerArrestTimer <= 0)
+            {
+                player.isArrested = true;
+                playerArrestTimer = 2;
+            }
+        } else if (playerArrestTimer != 2)
+        {
+            playerArrestTimer = 2;
+        }
     }
-
-
 }
