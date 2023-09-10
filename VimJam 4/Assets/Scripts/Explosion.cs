@@ -25,7 +25,7 @@ public class Explosion : MonoBehaviour
             if (collider.TryGetComponent<PoliceBehavior>(out var police))
             {
                 Rigidbody2D rb = collider.gameObject.GetComponent<Rigidbody2D>();
-                rb.AddForce((rb.gameObject.transform.position - transform.position).normalized * 10);
+                rb.AddForce((rb.transform.position - transform.position) * 10);
             }
         }
     }

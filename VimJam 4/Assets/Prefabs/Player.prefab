@@ -205,8 +205,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boomBox: {fileID: 0}
   rb: {fileID: 0}
+  boomBoxDistance: 0
   moveSpeed: 15
   pickUpDistance: 1
-  cursor: {fileID: 1113696354587288129, guid: c8e7ee152187bb94692bcbb171e3aac9, type: 3}
+  cursor: {fileID: 0}
   mainCamera: {fileID: 0}
   thrownItemPrefab: {fileID: 4562062273220050600, guid: eb03164016dda5549815dde7d6c9af74, type: 3}
