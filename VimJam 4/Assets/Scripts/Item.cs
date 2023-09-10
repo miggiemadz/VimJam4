@@ -1,7 +1,7 @@
 public enum ItemType {
 	Rock,
 	Bottle,
-	BoomBox,
+	Can,
 }
 
 public class Item {

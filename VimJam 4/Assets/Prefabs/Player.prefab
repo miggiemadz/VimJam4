@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8643108784470283096}
   - component: {fileID: 4714552371974044870}
   m_Layer: 0
-  m_Name: BoomBox Guy
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 33190ba8e75101f44b02ad361acad383, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e36a6c34a8bb6d54287604bf0c362e37, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -203,5 +203,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae4ff79d6e1d2342a2c9349decdd67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boomBox: {fileID: 0}
   rb: {fileID: 0}
   moveSpeed: 15
+  pickUpDistance: 1
+  cursor: {fileID: 1113696354587288129, guid: c8e7ee152187bb94692bcbb171e3aac9, type: 3}
+  mainCamera: {fileID: 0}
+  thrownItemPrefab: {fileID: 4562062273220050600, guid: eb03164016dda5549815dde7d6c9af74, type: 3}
