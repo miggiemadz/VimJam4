@@ -6,6 +6,7 @@ public class ThrownItem : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
     public GameObject floorItemPrefab;
+    public GameObject explosionPrefab;
 
     public Item item;
 
@@ -46,8 +47,14 @@ public class ThrownItem : MonoBehaviour
 
     void Land()
     {
-        GameObject floorItem = Instantiate(floorItemPrefab, transform.position, Quaternion.identity);
-        floorItem.GetComponent<FloorItem>().item = item;
+        if (item.type == ItemType.ExplodingCat)
+        {
+            GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        } else
+        {
+            GameObject floorItem = Instantiate(floorItemPrefab, transform.position, Quaternion.identity);
+            floorItem.GetComponent<FloorItem>().item = item;
+        }
         Destroy(gameObject);
     }
 }

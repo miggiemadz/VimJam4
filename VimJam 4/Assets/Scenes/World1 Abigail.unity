@@ -135,6 +135,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cooler
       objectReference: {fileID: 0}
+    - target: {fileID: 4714552371974044870, guid: 55b432c6094ad394d9ced24a419b7f34, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714552371974044870, guid: 55b432c6094ad394d9ced24a419b7f34, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714552371974044870, guid: 55b432c6094ad394d9ced24a419b7f34, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714552371974044870, guid: 55b432c6094ad394d9ced24a419b7f34, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5157259285019892989, guid: 55b432c6094ad394d9ced24a419b7f34, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.81434
