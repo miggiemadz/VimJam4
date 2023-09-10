@@ -7,6 +7,7 @@ public class PoliceBehavior : MonoBehaviour
 {
     public PlayerBehavior player;
     public GameObject boomBox;
+    public Animator animator;
 
     public float enemySpeed;
 
@@ -42,6 +43,15 @@ public class PoliceBehavior : MonoBehaviour
         Vector2 motion = finalPosition - transform.position;
         // send motion data to animator
         transform.position = finalPosition;
+
+        if (motion.x < 0)
+        {
+            gameObject.transform.localScale = new Vector3(0.104f, 0.09f, 1f);
+        }
+        if (motion.x > 0)
+        {
+            gameObject.transform.localScale = new Vector3(-0.104f, 0.09f, 1f);
+        }
       
         if (boomBoxDistance == 0)
         {
