@@ -54,6 +54,14 @@ public class ThrownItem : MonoBehaviour
         {
             GameObject floorItem = Instantiate(floorItemPrefab, transform.position, Quaternion.identity);
             floorItem.GetComponent<FloorItem>().item = item;
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1.0f);
+            foreach (Collider2D collider in colliders) 
+            { 
+                if (collider.TryGetComponent<PoliceBehavior>(out var _))
+                {
+                    Destroy(collider.gameObject);
+                }
+            }
         }
         Destroy(gameObject);
     }
