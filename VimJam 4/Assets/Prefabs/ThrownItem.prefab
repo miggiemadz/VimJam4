@@ -203,6 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5ea8b98bc0badb468f0107d92c130d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 4714552371974044870}
   floorItemPrefab: {fileID: 4562062273220050600, guid: 8a6b96ab4dd7e5d469c8d37a538caf46, type: 3}
   direction: {x: 0, y: 0, z: 0}
   speed: 25
