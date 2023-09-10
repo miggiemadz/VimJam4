@@ -329,6 +329,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d345d11ad068bab45bb7f8c8ceb23c57, type: 3}
+--- !u!1 &698380787 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4562062273220050600, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
+  m_PrefabInstance: {fileID: 1078906058}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &771705279
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,20 +562,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1842171827}
     - target: {fileID: 4610781721448309849, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
-      propertyPath: boomBox
-      value: 
-      objectReference: {fileID: 1483143880}
-    - target: {fileID: 4610781721448309849, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 437723763}
     - target: {fileID: 5157259285019892989, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0858
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157259285019892989, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0858
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157259285019892989, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2145
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157259285019892989, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0728
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5157259285019892989, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0437
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 5157259285019892989, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
       propertyPath: m_LocalPosition.z
@@ -614,26 +627,10 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7956901511298003414, guid: d09918fe4ca9790468ff2675aadd19e1, type: 3}
   m_PrefabInstance: {fileID: 961862861}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1483143880 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1440941535958988630, guid: d345d11ad068bab45bb7f8c8ceb23c57, type: 3}
-  m_PrefabInstance: {fileID: 471006576}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 387db58c50b9a94448a25bf5ee0f3ffd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1842171827 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1113696354587288129, guid: c8e7ee152187bb94692bcbb171e3aac9, type: 3}
   m_PrefabInstance: {fileID: 3820499173461483481}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1853325333 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4562062273220050600, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
-  m_PrefabInstance: {fileID: 1078906058}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2079062337
 GameObject:
@@ -754,11 +751,15 @@ PrefabInstance:
     - target: {fileID: 2040764861306365725, guid: 6a6400824a9be0b4ba1f00c2a0f1d121, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1853325333}
+      objectReference: {fileID: 698380787}
     - target: {fileID: 2040764861306365725, guid: 6a6400824a9be0b4ba1f00c2a0f1d121, type: 3}
       propertyPath: boomBox
       value: 
       objectReference: {fileID: 1483143880}
+    - target: {fileID: 2040764861306365725, guid: 6a6400824a9be0b4ba1f00c2a0f1d121, type: 3}
+      propertyPath: enemySpeed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2731709522519190009, guid: 6a6400824a9be0b4ba1f00c2a0f1d121, type: 3}
       propertyPath: m_Name
       value: PoliceF
@@ -823,11 +824,15 @@ PrefabInstance:
     - target: {fileID: 8915203265870291413, guid: de417fa08fd0e014c960d2276d4e86c0, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1853325333}
+      objectReference: {fileID: 698380787}
     - target: {fileID: 8915203265870291413, guid: de417fa08fd0e014c960d2276d4e86c0, type: 3}
       propertyPath: boomBox
       value: 
       objectReference: {fileID: 1483143880}
+    - target: {fileID: 8915203265870291413, guid: de417fa08fd0e014c960d2276d4e86c0, type: 3}
+      propertyPath: enemySpeed
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

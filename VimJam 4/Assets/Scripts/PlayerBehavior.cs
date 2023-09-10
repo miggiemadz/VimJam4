@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    [SerializeField] public BoomBox boomBox;
-
     public Rigidbody2D rb;
+    public Animator animator;
 
     public float boomBoxDistance;
+    public GameObject boomBox;
 
     public float moveSpeed;
     public float pickUpDistance = 1.0f;
@@ -19,6 +19,8 @@ public class PlayerBehavior : MonoBehaviour
     public Camera mainCamera;
     public GameObject thrownItemPrefab;
 
+    public bool boomBoxOn;
+
     public Item? item = new Item(ItemType.ExplodingCat);
 
     Vector2 movement;
@@ -26,11 +28,14 @@ public class PlayerBehavior : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        boomBoxOn = false;
     }
 
 
     void Update()
     {
+        animator.SetFloat("MovementSpeed", Mathf.Abs(rb.velocity.x));
+        animator.SetFloat("yValue", movement.y);
         boomBoxDistance = Vector2.Distance(rb.position, boomBox.transform.position);
 
         // get input axis for player movement
@@ -76,6 +81,7 @@ public class PlayerBehavior : MonoBehaviour
         movement.Normalize();
         rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
         boomBoxOnandOff();
+        Debug.Log(boomBoxOn);
     }
 
     public void SceneChanger()
@@ -99,13 +105,13 @@ public class PlayerBehavior : MonoBehaviour
 
     private void boomBoxOnandOff()
     {
-        if (boomBoxDistance <= 1)
+        if (boomBoxDistance <= 2)
         {
-            if (boomBox.boomboxOn == false)
+            if (boomBoxOn == false)
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    boomBox.boomboxOn = true;
+                    boomBoxOn = true;
                 }
             }
 
