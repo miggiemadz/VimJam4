@@ -7,25 +7,24 @@ public class PoliceBehavior : MonoBehaviour
 {
     public PlayerBehavior player;
     public GameObject boomBox;
+    public Animator animator;
 
     public float enemySpeed;
 
     private float playerDistance;
     private float boomBoxDistance;
 
-    public float boomBoxDestroyTimer;
+    float boomBoxDestroyTimer = 2;
+    float playerArrestTimer = 2;
 
     public float sightRange;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        boomBoxDestroyTimer = 2;
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         playerDistance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 playerDirection = player.transform.position - transform.position;
@@ -37,28 +36,54 @@ public class PoliceBehavior : MonoBehaviour
         boomBoxDirection.Normalize();
         float boomBoxAngle = Mathf.Atan2(boomBoxDirection.x, boomBoxDirection.y) * Mathf.Rad2Deg;
 
+        Vector3 finalPosition;
         if (player.boomBoxOn)
         {
-            transform.position = Vector2.MoveTowards(this.transform.position, boomBox.transform.position, enemySpeed * Time.deltaTime);
+            finalPosition = Vector2.MoveTowards(this.transform.position, boomBox.transform.position, enemySpeed * Time.fixedDeltaTime);
         }
         else
         {
-            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, enemySpeed * Time.deltaTime);
+            finalPosition = Vector2.MoveTowards(this.transform.position, player.transform.position, enemySpeed * Time.fixedDeltaTime);
         }
-      
+        Vector2 motion = finalPosition - transform.position;
+        // send motion data to animator
+        transform.position = finalPosition;
+
+        if (motion.x < 0)
+        {
+            gameObject.transform.localScale = new Vector3(0.104f, 0.09f, 1f);
+        }
+        if (motion.x > 0)
+        {
+            gameObject.transform.localScale = new Vector3(-0.104f, 0.09f, 1f);
+        }
+
+        animator.SetFloat("movementUp", motion.y);
+
+
         if (boomBoxDistance == 0)
         {
             boomBoxDestroyTimer -= Time.fixedDeltaTime; 
             
-            if(boomBoxDestroyTimer < 0)
+            if(boomBoxDestroyTimer <= 0)
             {
                 boomBox.SetActive(false);
                 player.boomBoxOn = false;
             }
         }
 
+        if (playerDistance <= 0.5)
+        {
+            playerArrestTimer -= Time.fixedDeltaTime;
 
+            if (playerArrestTimer <= 0)
+            {
+                player.isArrested = true;
+                playerArrestTimer = 2;
+            }
+        } else if (playerArrestTimer != 2)
+        {
+            playerArrestTimer = 2;
+        }
     }
-
-
 }

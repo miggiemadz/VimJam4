@@ -20,6 +20,7 @@ public class PlayerBehavior : MonoBehaviour
     public GameObject thrownItemPrefab;
 
     public bool boomBoxOn;
+    public bool isArrested;
 
     public Item? item = new(ItemType.ExplodingCat);
 
@@ -34,19 +35,37 @@ public class PlayerBehavior : MonoBehaviour
 
     void Update()
     {
-        animator.SetFloat("MovementSpeed", Mathf.Abs(rb.velocity.x));
-        animator.SetFloat("yValue", movement.y);
-        boomBoxDistance = Vector2.Distance(rb.position, boomBox.transform.position);
+        // if the game is paused, stop everything
+        if (Time.timeScale == 0.0f)
+        {
+            return;
+        }
+        animator.SetFloat("verticalMovment", movement.y);
+        animator.SetFloat("horizontalMovement", Mathf.Abs(movement.x));
 
         // get input axis for player movement
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        if (movement.x < 0)
+        {
+            gameObject.transform.localScale = new Vector3(0.0858f, 0.0858f, 0.2145f);
+        }
+        if (movement.x > 0)
+        {
+            gameObject.transform.localScale = new Vector3(-0.0858f, 0.0858f, 0.2145f);
+        }
 
         SceneChanger();
 
         Vector3 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
         cursor.transform.position = mousePos;
+
+        if (isArrested)
+        {
+            return;
+        }
 
         if (Input.GetButtonDown("Fire1"))
         {
@@ -78,6 +97,10 @@ public class PlayerBehavior : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (isArrested)
+        {
+            return;
+        }
         movement.Normalize();
         rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
         boomBoxOnandOff();
@@ -105,16 +128,15 @@ public class PlayerBehavior : MonoBehaviour
 
     private void boomBoxOnandOff()
     {
-        if (boomBoxDistance <= 2)
+        if (boomBoxOn == false)
         {
-            if (boomBoxOn == false)
+            if (Vector2.Distance(transform.position, boomBox.transform.position) <= 2)
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     boomBoxOn = true;
                 }
             }
-
         }
     }
 }
