@@ -104,7 +104,6 @@ public class PlayerBehavior : MonoBehaviour
         movement.Normalize();
         rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
         boomBoxOnandOff();
-        Debug.Log(boomBoxOn);
     }
 
     public void SceneChanger()
