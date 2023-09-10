@@ -206,5 +206,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 4714552371974044870}
   floorItemPrefab: {fileID: 4562062273220050600, guid: 8a6b96ab4dd7e5d469c8d37a538caf46, type: 3}
   explosionPrefab: {fileID: 2939776817252996227, guid: ce0f82f08511bcc4f8c5d0acc85d0689, type: 3}
+  LiquidPoolPrefab: {fileID: 5449333836897598642, guid: 3fb250df9ae18554d93f793cfa9fee11, type: 3}
   direction: {x: 0, y: 0, z: 0}
   speed: 25
