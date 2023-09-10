@@ -23,6 +23,7 @@ public class ThrownItem : MonoBehaviour
         distance = direction.magnitude;
         direction.Normalize();
         spriteRenderer.sprite = Item.GetSprite(item.type);
+        Debug.Log(spriteRenderer.sprite);
     }
 
     void FixedUpdate()

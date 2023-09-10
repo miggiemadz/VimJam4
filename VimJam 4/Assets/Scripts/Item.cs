@@ -24,19 +24,20 @@ public class Item
 			case ItemType.Can:
 				if (canSprite == null)
 				{
-					canSprite = Resources.Load<Sprite>("art/can");
+					canSprite = Resources.Load<Sprite>("Art/can");
 				}
 				return canSprite;
 			case ItemType.ExplodingCat:
 				if (catSprite == null)
 				{
-					catSprite = Resources.Load<Sprite>("art/cat");
+					catSprite = Resources.Load<Sprite>("Art/cat");
 				}
 				return catSprite;
 		}
 		if (bottleSprite == null)
 		{
-			bottleSprite = Resources.Load<Sprite>("art/bottle");
+			bottleSprite = Resources.Load<Sprite>("Art/bottle");
+			Debug.Log(bottleSprite);
 		}
 		return bottleSprite;
 	}

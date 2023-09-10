@@ -15,6 +15,6 @@ public class BoomBox : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(boomboxOn);
+        // Debug.Log(boomboxOn);
     }
 }
