@@ -7,6 +7,7 @@ public class ThrownItem : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public GameObject floorItemPrefab;
     public GameObject explosionPrefab;
+    public GameObject LiquidPoolPrefab;
 
     public Item item;
 
@@ -50,7 +51,12 @@ public class ThrownItem : MonoBehaviour
         if (item.type == ItemType.ExplodingCat)
         {
             GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-        } else
+        } 
+        if (item.type == ItemType.Bottle)
+        {
+            GameObject liquidPool = Instantiate(LiquidPoolPrefab, transform.position, Quaternion.identity);
+        }
+        else
         {
             GameObject floorItem = Instantiate(floorItemPrefab, transform.position, Quaternion.identity);
             floorItem.GetComponent<FloorItem>().item = item;
