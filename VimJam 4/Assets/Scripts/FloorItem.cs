@@ -13,5 +13,9 @@ public class FloorItem : MonoBehaviour
         {
             item = new Item(itemType);
         }
+
+        if (itemType == ItemType.ExplodingCat) {
+            gameObject.GetComponent<ExplodingCat>().enabled = true;
+        }
     }
 }
