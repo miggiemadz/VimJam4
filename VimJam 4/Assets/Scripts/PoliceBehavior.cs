@@ -19,6 +19,11 @@ public class PoliceBehavior : MonoBehaviour
 
     public float sightRange;
 
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     void FixedUpdate()
     {
         playerDistance = Vector2.Distance(transform.position, player.transform.position);
@@ -52,7 +57,10 @@ public class PoliceBehavior : MonoBehaviour
         {
             gameObject.transform.localScale = new Vector3(-0.104f, 0.09f, 1f);
         }
-      
+
+        animator.SetFloat("movementUp", motion.y);
+
+
         if (boomBoxDistance == 0)
         {
             boomBoxDestroyTimer -= Time.fixedDeltaTime; 
