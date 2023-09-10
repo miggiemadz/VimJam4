@@ -40,12 +40,21 @@ public class PlayerBehavior : MonoBehaviour
         {
             return;
         }
-        animator.SetFloat("MovementSpeed", Mathf.Abs(rb.velocity.x));
-        animator.SetFloat("yValue", movement.y);
+        animator.SetFloat("verticalMovment", movement.y);
+        animator.SetFloat("horizontalMovement", Mathf.Abs(movement.x));
 
         // get input axis for player movement
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        if (movement.x < 0)
+        {
+            gameObject.transform.localScale = new Vector3(0.0858f, 0.0858f, 0.2145f);
+        }
+        if (movement.x > 0)
+        {
+            gameObject.transform.localScale = new Vector3(-0.0858f, 0.0858f, 0.2145f);
+        }
 
         SceneChanger();
 
