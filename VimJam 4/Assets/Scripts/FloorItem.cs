@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FloorItem : MonoBehaviour
 {
+    public SpriteRenderer spriteRenderer;
     public ItemType itemType;
     public Item item;
 
@@ -14,8 +15,11 @@ public class FloorItem : MonoBehaviour
             item = new Item(itemType);
         }
 
-        if (itemType == ItemType.ExplodingCat) {
-            gameObject.GetComponent<ExplodingCat>().enabled = true;
+        spriteRenderer.sprite = Item.GetSprite(item.type);
+
+        if (itemType == ItemType.ExplodingCat)
+        {
+            gameObject.GetComponent<Cat>().enabled = true;
         }
     }
 }

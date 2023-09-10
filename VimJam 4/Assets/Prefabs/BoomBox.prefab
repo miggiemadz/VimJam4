@@ -204,7 +204,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  soundWavePrefab: {fileID: 2939776817252996227, guid: ce0f82f08511bcc4f8c5d0acc85d0689, type: 3}
-  tempo: 80
-  repulsiveForce: 0.1
   boomboxOn: 0
