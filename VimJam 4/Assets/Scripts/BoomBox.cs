@@ -17,6 +17,4 @@ public class BoomBox : MonoBehaviour
     {
         Debug.Log(boomboxOn);
     }
-
-
 }
