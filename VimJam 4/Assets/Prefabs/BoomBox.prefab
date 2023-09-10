@@ -95,10 +95,9 @@ GameObject:
   - component: {fileID: 5157259285019892989}
   - component: {fileID: 7214897077121600364}
   - component: {fileID: 1296558803257346049}
-  - component: {fileID: -8069466184573243102}
   - component: {fileID: 1440941535958988630}
   m_Layer: 0
-  m_Name: FloorItem
+  m_Name: BoomBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,7 +191,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-8069466184573243102
+--- !u!114 &1440941535958988630
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,20 +200,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4562062273220050600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5929f0d23a11d0847821d6358d41a7e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: 0
---- !u!114 &1440941535958988630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4562062273220050600}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 387db58c50b9a94448a25bf5ee0f3ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   soundWavePrefab: {fileID: 2939776817252996227, guid: ce0f82f08511bcc4f8c5d0acc85d0689, type: 3}
+  tempo: 80
+  repulsiveForce: 0.1
+  boomboxOn: 0

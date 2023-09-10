@@ -6,16 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class PlayerBehavior : MonoBehaviour
 {
+    [SerializeField] public BoomBox boomBox;
+
     public Rigidbody2D rb;
 
-    public float moveSpeed;
+    public float boomBoxDistance;
 
+    public float moveSpeed;
     public float pickUpDistance = 1.0f;
 
     public GameObject cursor;
-
     public Camera mainCamera;
-
     public GameObject thrownItemPrefab;
 
     public Item? item = new Item(ItemType.Rock);
@@ -30,6 +31,8 @@ public class PlayerBehavior : MonoBehaviour
 
     void Update()
     {
+        boomBoxDistance = Vector2.Distance(rb.position, boomBox.transform.position);
+
         // get input axis for player movement
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -72,6 +75,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         movement.Normalize();
         rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
+        boomBoxOnandOff();
     }
 
     public void SceneChanger()
@@ -90,6 +94,21 @@ public class PlayerBehavior : MonoBehaviour
             {
                 SceneManager.LoadScene(0);
             }
+        }
+    }
+
+    private void boomBoxOnandOff()
+    {
+        if (boomBoxDistance <= 1)
+        {
+            if (boomBox.boomboxOn == false)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    boomBox.boomboxOn = true;
+                }
+            }
+
         }
     }
 }

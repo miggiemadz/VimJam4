@@ -13,9 +13,5 @@ public class FloorItem : MonoBehaviour
         {
             item = new Item(itemType);
         }
-        if (item.type == ItemType.BoomBox)
-        {
-            gameObject.GetComponent<BoomBox>().enabled = true;
-        }
     }
 }
