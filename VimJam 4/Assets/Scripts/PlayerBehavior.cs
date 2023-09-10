@@ -7,29 +7,37 @@ using UnityEngine.SceneManagement;
 public class PlayerBehavior : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public Animator animator;
+
+    public float boomBoxDistance;
+    public GameObject boomBox;
 
     public float moveSpeed;
-
     public float pickUpDistance = 1.0f;
 
     public GameObject cursor;
-
     public Camera mainCamera;
-
     public GameObject thrownItemPrefab;
 
-    public Item? item = new Item(ItemType.Rock);
+    public bool boomBoxOn;
+
+    public Item? item = new(ItemType.ExplodingCat);
 
     Vector2 movement;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        boomBoxOn = false;
     }
 
 
     void Update()
     {
+        animator.SetFloat("MovementSpeed", Mathf.Abs(rb.velocity.x));
+        animator.SetFloat("yValue", movement.y);
+        boomBoxDistance = Vector2.Distance(rb.position, boomBox.transform.position);
+
         // get input axis for player movement
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -45,7 +53,7 @@ public class PlayerBehavior : MonoBehaviour
             if (item == null)
             {
                 Collider2D[] itemsNearby = Physics2D.OverlapCircleAll(transform.position, pickUpDistance);
-                Debug.Log(itemsNearby.Length);
+                //Debug.Log(itemsNearby.Length);
                 foreach (Collider2D collider in itemsNearby)
                 {
                     if (collider.gameObject.TryGetComponent<FloorItem>(out var floorItem))
@@ -72,6 +80,8 @@ public class PlayerBehavior : MonoBehaviour
     {
         movement.Normalize();
         rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
+        boomBoxOnandOff();
+        Debug.Log(boomBoxOn);
     }
 
     public void SceneChanger()
@@ -90,6 +100,21 @@ public class PlayerBehavior : MonoBehaviour
             {
                 SceneManager.LoadScene(0);
             }
+        }
+    }
+
+    private void boomBoxOnandOff()
+    {
+        if (boomBoxDistance <= 2)
+        {
+            if (boomBoxOn == false)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    boomBoxOn = true;
+                }
+            }
+
         }
     }
 }

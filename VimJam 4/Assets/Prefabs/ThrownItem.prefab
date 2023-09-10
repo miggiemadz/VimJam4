@@ -112,7 +112,7 @@ Transform:
   m_GameObject: {fileID: 4562062273220050600}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -13.541101, y: -25.485327, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -203,6 +203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5ea8b98bc0badb468f0107d92c130d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorItemPrefab: {fileID: 4562062273220050600, guid: d345d11ad068bab45bb7f8c8ceb23c57, type: 3}
+  spriteRenderer: {fileID: 4714552371974044870}
+  floorItemPrefab: {fileID: 4562062273220050600, guid: 8a6b96ab4dd7e5d469c8d37a538caf46, type: 3}
+  explosionPrefab: {fileID: 2939776817252996227, guid: ce0f82f08511bcc4f8c5d0acc85d0689, type: 3}
   direction: {x: 0, y: 0, z: 0}
   speed: 25

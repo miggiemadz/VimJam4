@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8643108784470283096}
   - component: {fileID: 4714552371974044870}
   m_Layer: 0
-  m_Name: Thrown Item
+  m_Name: Floor Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,8 @@ GameObject:
   - component: {fileID: 5157259285019892989}
   - component: {fileID: 7214897077121600364}
   - component: {fileID: 1296558803257346049}
-  - component: {fileID: -8069466184573243102}
+  - component: {fileID: 8050737913865648710}
+  - component: {fileID: 2078944530910860048}
   m_Layer: 0
   m_Name: FloorItem
   m_TagString: Untagged
@@ -191,7 +192,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-8069466184573243102
+--- !u!114 &8050737913865648710
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,4 +204,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5929f0d23a11d0847821d6358d41a7e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 4714552371974044870}
   itemType: 0
+--- !u!114 &2078944530910860048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4562062273220050600}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cbd783b2f9a66445ba6760817def295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

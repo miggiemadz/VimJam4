@@ -4,36 +4,22 @@ using UnityEngine;
 
 public class FloorItem : MonoBehaviour
 {
+    public SpriteRenderer spriteRenderer;
     public ItemType itemType;
     public Item item;
-    public static float tempo = 80.0f;
-    float timer = 0.0f;
 
-    void Start() {
-        if (item == null) {
+    void Start()
+    {
+        if (item == null)
+        {
             item = new Item(itemType);
         }
-        if (item.type == ItemType.BoomBox) {
-            Debug.Log("BoomBox Placed");
-        }
-    }
 
-    void FixedUpdate() {
-        if (item.type == ItemType.BoomBox) {
-            timer += Time.fixedDeltaTime * tempo / 60;
-            if (timer >= 1.0f) {
-                Debug.Log("BOOM");
-                transform.localScale = Vector3.one * 1.1f;
-                timer = 0.0f;
-            } else if (timer >= 0.25f) {
-                transform.localScale = Vector3.one * 1.0f;
-            }
-        }
-    }
+        spriteRenderer.sprite = Item.GetSprite(item.type);
 
-    void OnDestroy() {
-        if (item.type == ItemType.BoomBox) {
-            Debug.Log("BoomBox Destroyed");
+        if (itemType == ItemType.ExplodingCat)
+        {
+            gameObject.GetComponent<Cat>().enabled = true;
         }
     }
 }
