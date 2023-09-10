@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   boomBox: {fileID: 0}
-  enemySpeed: 0
+  enemySpeed: 3
   sightRange: 0
 --- !u!1 &2863359729148793607
 GameObject:
