@@ -37,7 +37,7 @@ public class Item
 		if (bottleSprite == null)
 		{
 			bottleSprite = Resources.Load<Sprite>("Art/bottle");
-			Debug.Log(bottleSprite);
+			//Debug.Log(bottleSprite);
 		}
 		return bottleSprite;
 	}

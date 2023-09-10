@@ -6,6 +6,7 @@ public class ThrownItem : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
     public GameObject floorItemPrefab;
+    public GameObject explosionPrefab;
 
     public Item item;
 
@@ -23,7 +24,7 @@ public class ThrownItem : MonoBehaviour
         distance = direction.magnitude;
         direction.Normalize();
         spriteRenderer.sprite = Item.GetSprite(item.type);
-        Debug.Log(spriteRenderer.sprite);
+        //Debug.Log(spriteRenderer.sprite);
     }
 
     void FixedUpdate()
@@ -36,14 +37,24 @@ public class ThrownItem : MonoBehaviour
         {
             transform.position += direction * Time.fixedDeltaTime * speed;
             arc += Time.fixedDeltaTime / distance * speed * 2;
-            transform.localScale = Vector3.one * (2 - Mathf.Pow(arc - 1, 2));
+            transform.localScale = Vector3.one * (3 - 2 * Mathf.Pow(arc - 1, 2));
+            if (item.type == ItemType.ExplodingCat)
+            {
+                transform.Rotate(new Vector3(0, 0, 20));
+            }
         }
     }
 
     void Land()
     {
-        GameObject floorItem = Instantiate(floorItemPrefab, transform.position, Quaternion.identity);
-        floorItem.GetComponent<FloorItem>().item = item;
+        if (item.type == ItemType.ExplodingCat)
+        {
+            GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        } else
+        {
+            GameObject floorItem = Instantiate(floorItemPrefab, transform.position, Quaternion.identity);
+            floorItem.GetComponent<FloorItem>().item = item;
+        }
         Destroy(gameObject);
     }
 }

@@ -19,7 +19,7 @@ public class PlayerBehavior : MonoBehaviour
     public Camera mainCamera;
     public GameObject thrownItemPrefab;
 
-    public Item? item = new Item(ItemType.Rock);
+    public Item? item = new Item(ItemType.ExplodingCat);
 
     Vector2 movement;
 
@@ -48,7 +48,7 @@ public class PlayerBehavior : MonoBehaviour
             if (item == null)
             {
                 Collider2D[] itemsNearby = Physics2D.OverlapCircleAll(transform.position, pickUpDistance);
-                Debug.Log(itemsNearby.Length);
+                //Debug.Log(itemsNearby.Length);
                 foreach (Collider2D collider in itemsNearby)
                 {
                     if (collider.gameObject.TryGetComponent<FloorItem>(out var floorItem))
