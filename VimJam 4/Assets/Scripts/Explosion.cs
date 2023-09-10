@@ -8,7 +8,14 @@ public class Explosion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 2);
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.TryGetComponent<PoliceBehavior>(out var _))
+            {
+                Destroy(collider.gameObject);
+            }
+        }
     }
 
     void FixedUpdate()
@@ -19,14 +26,5 @@ public class Explosion : MonoBehaviour
         }
         timer += Time.fixedDeltaTime;
         transform.localScale = Vector3.one * (1 + 100 * timer);
-
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, (1 + 100 * timer));
-        foreach (Collider2D collider in colliders) { 
-            if (collider.TryGetComponent<PoliceBehavior>(out var police))
-            {
-                Rigidbody2D rb = collider.gameObject.GetComponent<Rigidbody2D>();
-                rb.AddForce((rb.transform.position - transform.position) * 10);
-            }
-        }
     }
 }

@@ -329,11 +329,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d345d11ad068bab45bb7f8c8ceb23c57, type: 3}
---- !u!1 &698380787 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4562062273220050600, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
+--- !u!95 &698380789 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3926642073686645718, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
   m_PrefabInstance: {fileID: 1078906058}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &698380790 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4610781721448309849, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
+  m_PrefabInstance: {fileID: 1078906058}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae4ff79d6e1d2342a2c9349decdd67e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &771705279
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,6 +551,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8964864966176075239, guid: d09918fe4ca9790468ff2675aadd19e1, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a0c562096d8d2b643bf0d7696d2f5a62, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -561,6 +576,14 @@ PrefabInstance:
       propertyPath: cursor
       value: 
       objectReference: {fileID: 1842171827}
+    - target: {fileID: 4610781721448309849, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
+      propertyPath: boomBox
+      value: 
+      objectReference: {fileID: 1591254379}
+    - target: {fileID: 4610781721448309849, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 698380789}
     - target: {fileID: 4610781721448309849, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
       propertyPath: mainCamera
       value: 
@@ -626,6 +649,11 @@ PrefabInstance:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7956901511298003414, guid: d09918fe4ca9790468ff2675aadd19e1, type: 3}
   m_PrefabInstance: {fileID: 961862861}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1591254379 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4562062273220050600, guid: d345d11ad068bab45bb7f8c8ceb23c57, type: 3}
+  m_PrefabInstance: {fileID: 471006576}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1842171827 stripped
 GameObject:
@@ -751,11 +779,11 @@ PrefabInstance:
     - target: {fileID: 2040764861306365725, guid: 6a6400824a9be0b4ba1f00c2a0f1d121, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 698380787}
+      objectReference: {fileID: 698380790}
     - target: {fileID: 2040764861306365725, guid: 6a6400824a9be0b4ba1f00c2a0f1d121, type: 3}
       propertyPath: boomBox
       value: 
-      objectReference: {fileID: 1483143880}
+      objectReference: {fileID: 1591254379}
     - target: {fileID: 2040764861306365725, guid: 6a6400824a9be0b4ba1f00c2a0f1d121, type: 3}
       propertyPath: enemySpeed
       value: 3
@@ -824,11 +852,11 @@ PrefabInstance:
     - target: {fileID: 8915203265870291413, guid: de417fa08fd0e014c960d2276d4e86c0, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 698380787}
+      objectReference: {fileID: 698380790}
     - target: {fileID: 8915203265870291413, guid: de417fa08fd0e014c960d2276d4e86c0, type: 3}
       propertyPath: boomBox
       value: 
-      objectReference: {fileID: 1483143880}
+      objectReference: {fileID: 1591254379}
     - target: {fileID: 8915203265870291413, guid: de417fa08fd0e014c960d2276d4e86c0, type: 3}
       propertyPath: enemySpeed
       value: 3

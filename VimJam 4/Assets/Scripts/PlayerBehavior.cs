@@ -21,7 +21,7 @@ public class PlayerBehavior : MonoBehaviour
 
     public bool boomBoxOn;
 
-    public Item? item = new Item(ItemType.ExplodingCat);
+    public Item? item = new(ItemType.ExplodingCat);
 
     Vector2 movement;
 
