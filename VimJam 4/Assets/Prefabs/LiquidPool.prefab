@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6830757782066482583}
   - component: {fileID: 2801310906729863950}
   - component: {fileID: 7657669544822422502}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LiquidPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
