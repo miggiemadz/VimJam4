@@ -35,9 +35,13 @@ public class PlayerBehavior : MonoBehaviour
 
     void Update()
     {
+        // if the game is paused, stop everything
+        if (Time.timeScale == 0.0f)
+        {
+            return;
+        }
         animator.SetFloat("MovementSpeed", Mathf.Abs(rb.velocity.x));
         animator.SetFloat("yValue", movement.y);
-        boomBoxDistance = Vector2.Distance(rb.position, boomBox.transform.position);
 
         // get input axis for player movement
         movement.x = Input.GetAxisRaw("Horizontal");
@@ -115,16 +119,15 @@ public class PlayerBehavior : MonoBehaviour
 
     private void boomBoxOnandOff()
     {
-        if (boomBoxDistance <= 2)
+        if (boomBoxOn == false)
         {
-            if (boomBoxOn == false)
+            if (Vector2.Distance(transform.position, boomBox.transform.position) <= 2)
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     boomBoxOn = true;
                 }
             }
-
         }
     }
 }

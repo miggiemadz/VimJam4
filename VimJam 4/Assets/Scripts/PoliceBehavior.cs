@@ -18,8 +18,7 @@ public class PoliceBehavior : MonoBehaviour
 
     public float sightRange;
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         playerDistance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 playerDirection = player.transform.position - transform.position;
@@ -31,14 +30,18 @@ public class PoliceBehavior : MonoBehaviour
         boomBoxDirection.Normalize();
         float boomBoxAngle = Mathf.Atan2(boomBoxDirection.x, boomBoxDirection.y) * Mathf.Rad2Deg;
 
+        Vector3 finalPosition;
         if (player.boomBoxOn)
         {
-            transform.position = Vector2.MoveTowards(this.transform.position, boomBox.transform.position, enemySpeed * Time.deltaTime);
+            finalPosition = Vector2.MoveTowards(this.transform.position, boomBox.transform.position, enemySpeed * Time.fixedDeltaTime);
         }
         else
         {
-            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, enemySpeed * Time.deltaTime);
+            finalPosition = Vector2.MoveTowards(this.transform.position, player.transform.position, enemySpeed * Time.fixedDeltaTime);
         }
+        Vector2 motion = finalPosition - transform.position;
+        // send motion data to animator
+        transform.position = finalPosition;
       
         if (boomBoxDistance == 0)
         {
