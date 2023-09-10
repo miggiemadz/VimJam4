@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8643108784470283096}
   - component: {fileID: 4714552371974044870}
   m_Layer: 0
-  m_Name: Thrown Item
+  m_Name: Floor Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,6 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5929f0d23a11d0847821d6358d41a7e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 4714552371974044870}
   itemType: 0
 --- !u!114 &2078944530910860048
 MonoBehaviour:
