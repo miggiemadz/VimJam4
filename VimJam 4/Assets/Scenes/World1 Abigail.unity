@@ -323,6 +323,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoomBox
       objectReference: {fileID: 0}
+    - target: {fileID: 4772266349063382970, guid: d345d11ad068bab45bb7f8c8ceb23c57, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4772266349063382970, guid: d345d11ad068bab45bb7f8c8ceb23c57, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5157259285019892989, guid: d345d11ad068bab45bb7f8c8ceb23c57, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.03355
@@ -607,6 +615,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 836133344523323332, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 836133344523323332, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4308358706936246651, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -626,7 +642,7 @@ PrefabInstance:
     - target: {fileID: 4610781721448309849, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
       propertyPath: boomBox
       value: 
-      objectReference: {fileID: 1591254379}
+      objectReference: {fileID: 1591254380}
     - target: {fileID: 4610781721448309849, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
       propertyPath: animator
       value: 
@@ -691,6 +707,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5542830329782263482, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5542830329782263482, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7499782147452960315, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7499782147452960315, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -711,7 +743,7 @@ PrefabInstance:
     - target: {fileID: 693050847528438831, guid: 066ccc62e033cd548a3ad1269739f321, type: 3}
       propertyPath: boomBox
       value: 
-      objectReference: {fileID: 1591254379}
+      objectReference: {fileID: 1591254380}
     - target: {fileID: 693050847528438831, guid: 066ccc62e033cd548a3ad1269739f321, type: 3}
       propertyPath: spawnCooldown
       value: 1
@@ -849,11 +881,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d4587b1a8d004140ba5998f09d541a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1591254379 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4562062273220050600, guid: d345d11ad068bab45bb7f8c8ceb23c57, type: 3}
+--- !u!114 &1591254380 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1440941535958988630, guid: d345d11ad068bab45bb7f8c8ceb23c57, type: 3}
   m_PrefabInstance: {fileID: 471006576}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 387db58c50b9a94448a25bf5ee0f3ffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1612283152
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,7 +1086,7 @@ PrefabInstance:
     - target: {fileID: 2040764861306365725, guid: 6a6400824a9be0b4ba1f00c2a0f1d121, type: 3}
       propertyPath: boomBox
       value: 
-      objectReference: {fileID: 1591254379}
+      objectReference: {fileID: 1591254380}
     - target: {fileID: 2731709522519190009, guid: 6a6400824a9be0b4ba1f00c2a0f1d121, type: 3}
       propertyPath: m_Name
       value: PoliceF
@@ -1121,7 +1159,7 @@ PrefabInstance:
     - target: {fileID: 8915203265870291413, guid: de417fa08fd0e014c960d2276d4e86c0, type: 3}
       propertyPath: boomBox
       value: 
-      objectReference: {fileID: 1591254379}
+      objectReference: {fileID: 1591254380}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
