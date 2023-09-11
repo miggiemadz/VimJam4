@@ -19,27 +19,39 @@ public class PlayerBehavior : MonoBehaviour
     public Camera mainCamera;
     public GameObject thrownItemPrefab;
 
-    public bool boomBoxOn;
-    public bool isArrested;
+    public MusicBar musicBar;
+    public bool boomBoxOn = false;
+    public bool isArrested = false;
 
     public Item? item = new(ItemType.ExplodingCat);
+
+    float arrestTimer = 0f;
 
     Vector2 movement;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        boomBoxOn = false;
     }
-
 
     void Update()
     {
+        Vector3 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+        cursor.transform.position = mousePos;
         // if the game is paused, stop everything
         if (Time.timeScale == 0.0f)
         {
             return;
         }
+        SceneChanger();
+
+
+        if (isArrested)
+        {
+            return;
+        }
+
         animator.SetFloat("verticalMovment", movement.y);
         animator.SetFloat("horizontalMovement", Mathf.Abs(movement.x));
 
@@ -56,16 +68,6 @@ public class PlayerBehavior : MonoBehaviour
             gameObject.transform.localScale = new Vector3(-0.0858f, 0.0858f, 0.2145f);
         }
 
-        SceneChanger();
-
-        Vector3 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0;
-        cursor.transform.position = mousePos;
-
-        if (isArrested)
-        {
-            return;
-        }
 
         if (Input.GetButtonDown("Fire1"))
         {
@@ -99,6 +101,15 @@ public class PlayerBehavior : MonoBehaviour
     {
         if (isArrested)
         {
+            arrestTimer -= Time.fixedDeltaTime;
+            if (arrestTimer < 0)
+            {
+                // TODO: Explode on death?
+                // revert the music by 30s
+                musicBar.currentMusicValue -= 30;
+                isArrested = false;
+                arrestTimer = 2f;
+            }
             return;
         }
         movement.Normalize();

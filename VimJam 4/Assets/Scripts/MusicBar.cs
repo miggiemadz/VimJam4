@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.SceneManagement;
-using UnityEditor.SearchService;
-using UnityEngine.SceneManagement;
 
 public class MusicBar : MonoBehaviour
 {
@@ -12,7 +7,6 @@ public class MusicBar : MonoBehaviour
     public AudioSource audioSource;
 
     bool songNegative = false;
-
 
     public float currentMusicValue { 
         set
@@ -28,7 +22,7 @@ public class MusicBar : MonoBehaviour
         }
         get { return audioSource.time; }
     }
-
+    
     void Start()
     {
         slider = GetComponent<Slider>();
