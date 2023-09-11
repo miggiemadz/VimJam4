@@ -22,8 +22,9 @@ public class PlayerBehavior : MonoBehaviour
 
     public MusicBar musicBar;
     public Slider healthBar;
+    public Image heldItemIndicator;
 
-    public Item? item = new(ItemType.ExplodingCat);
+    private Item? item;
 
     public float arrestTimer {
         get { return healthBar.value; }
@@ -33,11 +34,28 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
+    public Item Item { 
+        get => item;
+        set 
+        { 
+            item = value;
+            if (value == null)
+            {
+                heldItemIndicator.gameObject.SetActive(false);
+            } else
+            {
+                heldItemIndicator.gameObject.SetActive(true);
+                heldItemIndicator.sprite = Item.GetSprite(value.type);
+            }
+        }
+    }
+
     Vector2 movement;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        Item = new Item(ItemType.ExplodingCat);
     }
 
     void Update()
@@ -71,7 +89,7 @@ public class PlayerBehavior : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            if (item == null)
+            if (Item == null)
             {
                 Collider2D[] itemsNearby = Physics2D.OverlapCircleAll(transform.position, pickUpDistance);
                 //Debug.Log(itemsNearby.Length);
@@ -79,7 +97,7 @@ public class PlayerBehavior : MonoBehaviour
                 {
                     if (collider.gameObject.TryGetComponent<FloorItem>(out var floorItem))
                     {
-                        item = floorItem.item;
+                        Item = floorItem.item;
                         Destroy(collider.gameObject);
                         break;
                     }
@@ -90,8 +108,8 @@ public class PlayerBehavior : MonoBehaviour
                 Vector3 thrownItemDirection = cursor.transform.position - transform.position;
                 GameObject thrownItem = Instantiate(thrownItemPrefab, transform.position, Quaternion.identity);
                 ThrownItem thrownItemScript = thrownItem.GetComponent<ThrownItem>();
-                thrownItemScript.item = item;
-                item = null;
+                thrownItemScript.item = Item;
+                Item = null;
                 thrownItemScript.direction = thrownItemDirection;
             }
         }
