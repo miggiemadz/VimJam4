@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public PlayerBehavior player;
-    public GameObject boomBox;
+    public BoomBox boomBox;
 
     public GameObject[] enemyPrefabs;
     public Transform[] spawnLocations;

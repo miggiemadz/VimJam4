@@ -607,6 +607,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4308358706936246651, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308358706936246651, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4562062273220050600, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
       propertyPath: m_Name
       value: BoomBoxGuy
@@ -623,6 +631,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 698380789}
+    - target: {fileID: 4610781721448309849, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
+      propertyPath: musicBar
+      value: 
+      objectReference: {fileID: 1367950353}
     - target: {fileID: 4610781721448309849, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
       propertyPath: mainCamera
       value: 
@@ -826,6 +838,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7956901511298003414, guid: d09918fe4ca9790468ff2675aadd19e1, type: 3}
   m_PrefabInstance: {fileID: 961862861}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1367950353 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6086161243199888819, guid: d09918fe4ca9790468ff2675aadd19e1, type: 3}
+  m_PrefabInstance: {fileID: 961862861}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d4587b1a8d004140ba5998f09d541a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1591254379 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4562062273220050600, guid: d345d11ad068bab45bb7f8c8ceb23c57, type: 3}
