@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2040764861306365725}
   - component: {fileID: 7420885095314266466}
   - component: {fileID: 2928583814547922990}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PoliceF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,6 +123,9 @@ MonoBehaviour:
   player: {fileID: 0}
   boomBox: {fileID: 0}
   animator: {fileID: 7420885095314266466}
+  liquidPool: {fileID: 5449333836897598642, guid: 3fb250df9ae18554d93f793cfa9fee11, type: 3}
+  collider: {fileID: 0}
+  liquidCollider: {fileID: 0}
   enemySpeed: 3
   sightRange: 0
 --- !u!95 &7420885095314266466

@@ -8,11 +8,13 @@ public class PoliceBehavior : MonoBehaviour
     public PlayerBehavior player;
     public GameObject boomBox;
     public Animator animator;
+    public GameObject liquidPool;
 
     public float enemySpeed;
 
     private float playerDistance;
     private float boomBoxDistance;
+    private float liquidPoolDistance;
 
     float boomBoxDestroyTimer = 2;
     float playerArrestTimer = 2;
@@ -26,6 +28,8 @@ public class PoliceBehavior : MonoBehaviour
 
     void FixedUpdate()
     {
+        liquidPoolDistance = Vector2.Distance(transform.position, liquidPool.transform.position);
+
         playerDistance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 playerDirection = player.transform.position - transform.position;
         playerDirection.Normalize();
@@ -35,6 +39,8 @@ public class PoliceBehavior : MonoBehaviour
         Vector2 boomBoxDirection = boomBox.transform.position - transform.position;
         boomBoxDirection.Normalize();
         float boomBoxAngle = Mathf.Atan2(boomBoxDirection.x, boomBoxDirection.y) * Mathf.Rad2Deg;
+
+
 
         Vector3 finalPosition;
         if (player.boomBoxOn)
@@ -57,9 +63,6 @@ public class PoliceBehavior : MonoBehaviour
         {
             gameObject.transform.localScale = new Vector3(-0.104f, 0.09f, 1f);
         }
-
-        animator.SetFloat("movementUp", motion.y);
-
 
         if (boomBoxDistance == 0)
         {
@@ -85,5 +88,6 @@ public class PoliceBehavior : MonoBehaviour
         {
             playerArrestTimer = 2;
         }
+
     }
 }
