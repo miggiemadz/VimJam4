@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class BoomBox : MonoBehaviour
 {
+    public bool boomboxOn;
     public GameObject player;
 
     public bool boomboxOn = false;
@@ -12,6 +13,12 @@ public class BoomBox : MonoBehaviour
 
     public float boomBoxHealth
     {
+        boomboxOn = false;
+    }
+
+    void FixedUpdate()
+    {
+        Debug.Log(boomboxOn);
         get { return healthBar.value; }
         set { healthBar.value = value; if (value <= 0)
             {

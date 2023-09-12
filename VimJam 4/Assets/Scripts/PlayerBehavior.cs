@@ -20,6 +20,7 @@ public class PlayerBehavior : MonoBehaviour
     public Camera mainCamera;
     public GameObject thrownItemPrefab;
 
+    public bool isArrested;
     public MusicBar musicBar;
     public Slider healthBar;
 
@@ -42,6 +43,8 @@ public class PlayerBehavior : MonoBehaviour
 
     void Update()
     {
+        boomBoxDistance = Vector2.Distance(transform.position, boomBox.transform.position);
+
         Vector3 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
         cursor.transform.position = mousePos;
@@ -148,12 +151,14 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
-    private void boomBoxOnandOff()
+    private void OnTriggerStay2D(Collider2D collision)
     {
+        if (collision.CompareTag("BoomBox"))
         if (!boomBox.boomboxOn && boomBox.boomBoxHealth == 5)
         {
-            if (Vector2.Distance(transform.position, boomBox.transform.position) <= 2)
+            if (Input.GetKey(KeyCode.E))
             {
+                boomBox.boomboxOn = true;
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     boomBox.boomboxOn = true;
@@ -161,4 +166,6 @@ public class PlayerBehavior : MonoBehaviour
             }
         }
     }
+
+
 }

@@ -100,7 +100,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -123,9 +123,6 @@ MonoBehaviour:
   player: {fileID: 0}
   boomBox: {fileID: 0}
   animator: {fileID: 7420885095314266466}
-  liquidPool: {fileID: 5449333836897598642, guid: 3fb250df9ae18554d93f793cfa9fee11, type: 3}
-  collider: {fileID: 0}
-  liquidCollider: {fileID: 0}
   enemySpeed: 3
   sightRange: 0
 --- !u!95 &7420885095314266466
