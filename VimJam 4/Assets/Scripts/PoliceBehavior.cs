@@ -8,13 +8,15 @@ public class PoliceBehavior : MonoBehaviour
     public PlayerBehavior player;
     public BoomBox BoomBox;
     public GameObject boomBoxPrefab;
-    public BoomBox boomBox;
     public Animator animator;
 
     public float enemySpeed;
 
     private float playerDistance;
     private float boomBoxDistance;
+
+    float boomBoxDestroyTimer = 2;
+    float playerArrestTimer = 2;
 
     public float sightRange;
 
@@ -39,7 +41,6 @@ public class PoliceBehavior : MonoBehaviour
 
         Vector3 finalPosition;
         if (BoomBox.boomboxOn)
-        if (boomBox.boomboxOn)
         {
             finalPosition = Vector2.MoveTowards(this.transform.position, boomBoxPrefab.transform.position, enemySpeed * Time.fixedDeltaTime);
         }
@@ -69,8 +70,22 @@ public class PoliceBehavior : MonoBehaviour
                 boomBoxPrefab.SetActive(false);
                 BoomBox.boomboxOn = false;
             }
-            boomBox.boomBoxHealth -= Time.fixedDeltaTime;
         }
+
+        if (playerDistance <= 0.5)
+        {
+            playerArrestTimer -= Time.fixedDeltaTime;
+
+            if (playerArrestTimer <= 0)
+            {
+                player.isArrested = true;
+                playerArrestTimer = 2;
+            }
+        } else if (playerArrestTimer != 2)
+        {
+            playerArrestTimer = 2;
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
