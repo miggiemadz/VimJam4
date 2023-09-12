@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public PlayerBehavior player;
-    public GameObject boomBox;
+    public BoomBox boomBox;
 
     public GameObject[] enemyPrefabs;
     public Transform[] spawnLocations;
@@ -18,8 +18,8 @@ public class EnemySpawner : MonoBehaviour
         if (spawnTimer > spawnCooldown)
         {
             spawnTimer -= spawnCooldown;
-            Vector2 spawnLocation = spawnLocations[Random.Range(0, spawnLocations.Length - 1)].position;
-            GameObject enemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length - 1)], spawnLocation, Quaternion.identity);
+            Vector2 spawnLocation = spawnLocations[Random.Range(0, spawnLocations.Length)].position;
+            GameObject enemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnLocation, Quaternion.identity);
             PoliceBehavior policeBehavior = enemy.GetComponent<PoliceBehavior>();
             policeBehavior.player = player;
             policeBehavior.boomBox = boomBox;

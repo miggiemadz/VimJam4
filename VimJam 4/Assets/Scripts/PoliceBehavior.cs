@@ -6,7 +6,7 @@ using UnityEngine;
 public class PoliceBehavior : MonoBehaviour
 {
     public PlayerBehavior player;
-    public GameObject boomBox;
+    public BoomBox boomBox;
     public Animator animator;
     public GameObject liquidPool;
 
@@ -15,9 +15,6 @@ public class PoliceBehavior : MonoBehaviour
     private float playerDistance;
     private float boomBoxDistance;
     private float liquidPoolDistance;
-
-    float boomBoxDestroyTimer = 2;
-    float playerArrestTimer = 2;
 
     public float sightRange;
 
@@ -43,7 +40,7 @@ public class PoliceBehavior : MonoBehaviour
 
 
         Vector3 finalPosition;
-        if (player.boomBoxOn)
+        if (boomBox.boomboxOn)
         {
             finalPosition = Vector2.MoveTowards(this.transform.position, boomBox.transform.position, enemySpeed * Time.fixedDeltaTime);
         }
@@ -66,28 +63,7 @@ public class PoliceBehavior : MonoBehaviour
 
         if (boomBoxDistance == 0)
         {
-            boomBoxDestroyTimer -= Time.fixedDeltaTime; 
-            
-            if(boomBoxDestroyTimer <= 0)
-            {
-                boomBox.SetActive(false);
-                player.boomBoxOn = false;
-            }
+            boomBox.boomBoxHealth -= Time.fixedDeltaTime;
         }
-
-        if (playerDistance <= 0.5)
-        {
-            playerArrestTimer -= Time.fixedDeltaTime;
-
-            if (playerArrestTimer <= 0)
-            {
-                player.isArrested = true;
-                playerArrestTimer = 2;
-            }
-        } else if (playerArrestTimer != 2)
-        {
-            playerArrestTimer = 2;
-        }
-
     }
 }
