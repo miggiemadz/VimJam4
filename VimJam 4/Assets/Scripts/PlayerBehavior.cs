@@ -10,7 +10,7 @@ public class PlayerBehavior : MonoBehaviour
     public Animator animator;
 
     public float boomBoxDistance;
-    public GameObject boomBox;
+    public BoomBox boomBox;
 
     public float moveSpeed;
     public float pickUpDistance = 1.0f;
@@ -19,7 +19,6 @@ public class PlayerBehavior : MonoBehaviour
     public Camera mainCamera;
     public GameObject thrownItemPrefab;
 
-    public bool boomBoxOn;
     public bool isArrested;
 
     public Item? item = new(ItemType.ExplodingCat);
@@ -29,12 +28,13 @@ public class PlayerBehavior : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        boomBoxOn = false;
     }
 
 
     void Update()
     {
+        boomBoxDistance = Vector2.Distance(transform.position, boomBox.transform.position);
+
         // if the game is paused, stop everything
         if (Time.timeScale == 0.0f)
         {
@@ -103,7 +103,6 @@ public class PlayerBehavior : MonoBehaviour
         }
         movement.Normalize();
         rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
-        boomBoxOnandOff();
     }
 
     public void SceneChanger()
@@ -125,17 +124,16 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
-    private void boomBoxOnandOff()
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (boomBoxOn == false)
+        if (collision.CompareTag("BoomBox"))
         {
-            if (Vector2.Distance(transform.position, boomBox.transform.position) <= 2)
+            if (Input.GetKey(KeyCode.E))
             {
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    boomBoxOn = true;
-                }
+                boomBox.boomboxOn = true;
             }
         }
     }
+
+
 }

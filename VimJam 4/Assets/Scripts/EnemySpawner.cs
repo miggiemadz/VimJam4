@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public PlayerBehavior player;
-    public GameObject boomBox;
+    public BoomBox boomBox;
 
     public GameObject[] enemyPrefabs;
     public Transform[] spawnLocations;
@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
             GameObject enemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length - 1)], spawnLocation, Quaternion.identity);
             PoliceBehavior policeBehavior = enemy.GetComponent<PoliceBehavior>();
             policeBehavior.player = player;
-            policeBehavior.boomBox = boomBox;
+            policeBehavior.BoomBox = boomBox;
         }
     }
 }

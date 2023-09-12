@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BoomBox : MonoBehaviour
 {
-    public GameObject player;
-
     public bool boomboxOn;
 
     void Start()
@@ -15,6 +13,6 @@ public class BoomBox : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Debug.Log(boomboxOn);
+        Debug.Log(boomboxOn);
     }
 }
