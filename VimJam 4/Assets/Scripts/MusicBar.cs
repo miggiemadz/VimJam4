@@ -1,26 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.SceneManagement;
-using UnityEditor.SearchService;
-using UnityEngine.SceneManagement;
 
 public class MusicBar : MonoBehaviour
 {
     public Slider slider;
     public AudioSource audioSource;
 
+    bool songNegative = false;
 
     public float currentMusicValue { 
         set
         { 
-            audioSource.time = value; 
-            slider.value = value; 
+            if (value < 0f)
+            {
+                audioSource.Stop();
+                songNegative = true;
+            } else
+            {
+            audioSource.time = value;
+            }
         }
         get { return audioSource.time; }
     }
-
+    
     void Start()
     {
         slider = GetComponent<Slider>();
@@ -34,5 +36,12 @@ public class MusicBar : MonoBehaviour
     public void Update()
     {
         slider.value = audioSource.time;
+        if (songNegative)
+        {
+            // TODO: The song is set below zero
+        } else if (currentMusicValue >= audioSource.clip.length)
+        {
+            // TODO: The song finishes playing
+        }
     }
 }

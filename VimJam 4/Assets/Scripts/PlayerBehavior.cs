@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -20,8 +21,18 @@ public class PlayerBehavior : MonoBehaviour
     public GameObject thrownItemPrefab;
 
     public bool isArrested;
+    public MusicBar musicBar;
+    public Slider healthBar;
 
     public Item? item = new(ItemType.ExplodingCat);
+
+    public float arrestTimer {
+        get { return healthBar.value; }
+        set {
+            healthBar.value = value; 
+            healthBar.gameObject.SetActive(value < 2);
+        }
+    }
 
     Vector2 movement;
 
@@ -30,16 +41,20 @@ public class PlayerBehavior : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-
     void Update()
     {
         boomBoxDistance = Vector2.Distance(transform.position, boomBox.transform.position);
 
+        Vector3 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+        cursor.transform.position = mousePos;
         // if the game is paused, stop everything
         if (Time.timeScale == 0.0f)
         {
             return;
         }
+        SceneChanger();
+
         animator.SetFloat("verticalMovment", movement.y);
         animator.SetFloat("horizontalMovement", Mathf.Abs(movement.x));
 
@@ -56,16 +71,6 @@ public class PlayerBehavior : MonoBehaviour
             gameObject.transform.localScale = new Vector3(-0.0858f, 0.0858f, 0.2145f);
         }
 
-        SceneChanger();
-
-        Vector3 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0;
-        cursor.transform.position = mousePos;
-
-        if (isArrested)
-        {
-            return;
-        }
 
         if (Input.GetButtonDown("Fire1"))
         {
@@ -93,13 +98,35 @@ public class PlayerBehavior : MonoBehaviour
                 thrownItemScript.direction = thrownItemDirection;
             }
         }
+        boomBoxOnandOff();
     }
 
     void FixedUpdate()
     {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1.0f);
+        bool isArrested = false;
+        foreach(Collider2D collider in colliders)
+        {
+            if (collider.gameObject.TryGetComponent<PoliceBehavior>(out var policeBehavior))
+            {
+                arrestTimer -= Time.fixedDeltaTime;
+                isArrested = true;
+            }
+        }
         if (isArrested)
         {
-            return;
+            if (arrestTimer <= 0)
+            {
+                // TODO: Explode on death?
+                // revert the music by 10s
+                musicBar.currentMusicValue -= 10;
+                isArrested = false;
+                arrestTimer = 2f;
+                return;
+            }
+        } else
+        {
+            arrestTimer += 2 * Time.fixedDeltaTime;
         }
         movement.Normalize();
         rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
@@ -127,10 +154,15 @@ public class PlayerBehavior : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("BoomBox"))
+        if (!boomBox.boomboxOn && boomBox.boomBoxHealth == 5)
         {
             if (Input.GetKey(KeyCode.E))
             {
                 boomBox.boomboxOn = true;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    boomBox.boomboxOn = true;
+                }
             }
         }
     }
