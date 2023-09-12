@@ -52,7 +52,7 @@ public class ThrownItem : MonoBehaviour
         {
             GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         } 
-        if (item.type == ItemType.Bottle)
+        else if (item.type == ItemType.Bottle)
         {
             GameObject liquidPool = Instantiate(LiquidPoolPrefab, transform.position, Quaternion.identity);
         }
