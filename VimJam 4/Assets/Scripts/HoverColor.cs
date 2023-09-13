@@ -8,8 +8,11 @@ public class HoverColor : MonoBehaviour
 {
     public Button button;
     public Color desiredColor;
+    [HideInInspector]
     private Color originalColor;
+    [HideInInspector]
     private ColorBlock colorBlock;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +25,13 @@ public class HoverColor : MonoBehaviour
     {
         
     }
+
     public void changeWhenHover()
     {
         colorBlock.selectedColor = desiredColor;
         button.colors = colorBlock;
     }
+
     public void changeWhenLeft()
     {
         colorBlock.selectedColor = originalColor;

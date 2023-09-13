@@ -3,26 +3,31 @@ using UnityEngine.UI;
 
 public class MusicBar : MonoBehaviour
 {
+    [HideInInspector]
     public Slider slider;
+    [HideInInspector]
     public AudioSource audioSource;
+    public EnemySpawner spawner;
 
     bool songNegative = false;
 
-    public float currentMusicValue { 
+    public float currentMusicValue
+    {
         set
-        { 
+        {
             if (value < 0f)
             {
                 audioSource.Stop();
                 songNegative = true;
-            } else
+            }
+            else
             {
-            audioSource.time = value;
+                audioSource.time = value;
             }
         }
         get { return audioSource.time; }
     }
-    
+
     void Start()
     {
         slider = GetComponent<Slider>();
@@ -30,6 +35,10 @@ public class MusicBar : MonoBehaviour
 
         slider.maxValue = audioSource.clip.length;
         currentMusicValue = 0;
+
+        // figure out how many cops need to spawn
+        spawner.enemiesRemainingToSpawn = (int)(audioSource.clip.length / spawner.spawnCooldown);
+
         audioSource.Play();
     }
 
@@ -39,7 +48,8 @@ public class MusicBar : MonoBehaviour
         if (songNegative)
         {
             // TODO: The song is set below zero
-        } else if (currentMusicValue >= audioSource.clip.length)
+        }
+        else if (currentMusicValue >= audioSource.clip.length)
         {
             // TODO: The song finishes playing
         }

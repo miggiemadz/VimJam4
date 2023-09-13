@@ -7,22 +7,24 @@ using UnityEngine.UI;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    public Animator animator;
 
+    [HideInInspector]
     public float boomBoxDistance;
-    public BoomBox boomBox;
-
+    [Header("Player Settings")]
     public float moveSpeed;
     public float pickUpDistance = 1.0f;
-
-    public GameObject cursor;
+    [Header("Objects in the world (set in each scene)")]
     public Camera mainCamera;
-    public GameObject thrownItemPrefab;
-
+    public GameObject cursor;
+    public BoomBox boomBox;
     public MusicBar musicBar;
-    public Slider healthBar;
     public Image heldItemIndicator;
+    [HideInInspector]
+    public Rigidbody2D rb;
+    [Header("Objects related to the player (set in prefab)")]
+    public Animator animator;
+    public Slider healthBar;
+    public GameObject thrownItemPrefab;
 
     private Item? item;
 

@@ -9,6 +9,7 @@ public class PoliceBehavior : MonoBehaviour
     public BoomBox boomBox;
     public Animator animator;
     public GameObject liquidPool;
+    public EnemySpawner spawner;
 
     public float enemySpeed;
 
@@ -37,8 +38,6 @@ public class PoliceBehavior : MonoBehaviour
         boomBoxDirection.Normalize();
         float boomBoxAngle = Mathf.Atan2(boomBoxDirection.x, boomBoxDirection.y) * Mathf.Rad2Deg;
 
-
-
         Vector3 finalPosition;
         if (boomBox.boomboxOn)
         {
@@ -65,5 +64,10 @@ public class PoliceBehavior : MonoBehaviour
         {
             boomBox.boomBoxHealth -= Time.fixedDeltaTime;
         }
+    }
+
+    void OnDestroy()
+    {
+        spawner.enemiesInGame--;
     }
 }

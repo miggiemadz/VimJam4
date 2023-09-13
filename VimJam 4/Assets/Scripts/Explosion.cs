@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
+    [HideInInspector]
     float timer = 0.0f;
     // Start is called before the first frame update
     void Start()
