@@ -23,6 +23,9 @@ public class MusicBar : MonoBehaviour
             else
             {
                 audioSource.time = value;
+
+                // figure out how many cops need to spawn
+                spawner.enemiesRemainingToSpawn = (int)(audioSource.clip.length / spawner.spawnCooldown);
             }
         }
         get { return audioSource.time; }
@@ -35,9 +38,6 @@ public class MusicBar : MonoBehaviour
 
         slider.maxValue = audioSource.clip.length;
         currentMusicValue = 0;
-
-        // figure out how many cops need to spawn
-        spawner.enemiesRemainingToSpawn = (int)(audioSource.clip.length / spawner.spawnCooldown);
 
         audioSource.Play();
     }
