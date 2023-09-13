@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
             GameObject enemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnLocation, Quaternion.identity);
             PoliceBehavior policeBehavior = enemy.GetComponent<PoliceBehavior>();
             policeBehavior.player = player;
-            policeBehavior.boomBox = boomBox;
+            policeBehavior.BoomBox = boomBox;
         }
     }
 }

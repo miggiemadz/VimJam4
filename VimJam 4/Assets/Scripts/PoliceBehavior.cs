@@ -6,15 +6,17 @@ using UnityEngine;
 public class PoliceBehavior : MonoBehaviour
 {
     public PlayerBehavior player;
-    public BoomBox boomBox;
+    public BoomBox BoomBox;
+    public GameObject boomBoxPrefab;
     public Animator animator;
-    public GameObject liquidPool;
 
     public float enemySpeed;
 
     private float playerDistance;
     private float boomBoxDistance;
-    private float liquidPoolDistance;
+
+    float boomBoxDestroyTimer = 2;
+    float playerArrestTimer = 2;
 
     public float sightRange;
 
@@ -25,24 +27,22 @@ public class PoliceBehavior : MonoBehaviour
 
     void FixedUpdate()
     {
-        liquidPoolDistance = Vector2.Distance(transform.position, liquidPool.transform.position);
-
         playerDistance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 playerDirection = player.transform.position - transform.position;
         playerDirection.Normalize();
         float playerAngle = Mathf.Atan2(playerDirection.x, playerDirection.y) * Mathf.Rad2Deg;
 
-        boomBoxDistance = Vector2.Distance(transform.position, boomBox.transform.position);
-        Vector2 boomBoxDirection = boomBox.transform.position - transform.position;
+        boomBoxDistance = Vector2.Distance(transform.position, boomBoxPrefab.transform.position);
+        Vector2 boomBoxDirection = boomBoxPrefab.transform.position - transform.position;
         boomBoxDirection.Normalize();
         float boomBoxAngle = Mathf.Atan2(boomBoxDirection.x, boomBoxDirection.y) * Mathf.Rad2Deg;
 
 
 
         Vector3 finalPosition;
-        if (boomBox.boomboxOn)
+        if (BoomBox.boomboxOn)
         {
-            finalPosition = Vector2.MoveTowards(this.transform.position, boomBox.transform.position, enemySpeed * Time.fixedDeltaTime);
+            finalPosition = Vector2.MoveTowards(this.transform.position, boomBoxPrefab.transform.position, enemySpeed * Time.fixedDeltaTime);
         }
         else
         {
@@ -63,7 +63,41 @@ public class PoliceBehavior : MonoBehaviour
 
         if (boomBoxDistance == 0)
         {
-            boomBox.boomBoxHealth -= Time.fixedDeltaTime;
+            boomBoxDestroyTimer -= Time.fixedDeltaTime; 
+            
+            if(boomBoxDestroyTimer <= 0)
+            {
+                boomBoxPrefab.SetActive(false);
+                BoomBox.boomboxOn = false;
+            }
         }
+
+        if (playerDistance <= 0.5)
+        {
+            playerArrestTimer -= Time.fixedDeltaTime;
+
+            if (playerArrestTimer <= 0)
+            {
+                player.isArrested = true;
+                playerArrestTimer = 2;
+            }
+        } else if (playerArrestTimer != 2)
+        {
+            playerArrestTimer = 2;
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("LiquidPool"))
+        {
+            enemySpeed *= .5f;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        enemySpeed = 4f;
     }
 }
