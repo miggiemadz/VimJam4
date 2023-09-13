@@ -523,6 +523,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0.9283447
       objectReference: {fileID: 0}
+    - target: {fileID: 6086161243199888819, guid: d09918fe4ca9790468ff2675aadd19e1, type: 3}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 1185888709}
     - target: {fileID: 7956901511298003414, guid: d09918fe4ca9790468ff2675aadd19e1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -855,6 +859,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7320197958235452219, guid: 066ccc62e033cd548a3ad1269739f321, type: 3}
   m_PrefabInstance: {fileID: 1185888707}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1185888709 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 693050847528438831, guid: 066ccc62e033cd548a3ad1269739f321, type: 3}
+  m_PrefabInstance: {fileID: 1185888707}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 741c744d8c867b740a54df865daaf684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1333609625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,6 +1123,10 @@ PrefabInstance:
       propertyPath: boomBox
       value: 
       objectReference: {fileID: 1591254380}
+    - target: {fileID: 2040764861306365725, guid: 6a6400824a9be0b4ba1f00c2a0f1d121, type: 3}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 1185888709}
     - target: {fileID: 2731709522519190009, guid: 6a6400824a9be0b4ba1f00c2a0f1d121, type: 3}
       propertyPath: m_Name
       value: PoliceF
@@ -1181,6 +1200,10 @@ PrefabInstance:
       propertyPath: boomBox
       value: 
       objectReference: {fileID: 1591254380}
+    - target: {fileID: 8915203265870291413, guid: de417fa08fd0e014c960d2276d4e86c0, type: 3}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 1185888709}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
