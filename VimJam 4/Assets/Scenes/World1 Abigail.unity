@@ -658,7 +658,7 @@ PrefabInstance:
     - target: {fileID: 4610781721448309849, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
       propertyPath: boomBox
       value: 
-      objectReference: {fileID: 1591254379}
+      objectReference: {fileID: 1591254385}
     - target: {fileID: 4610781721448309849, guid: d76148721c9a54b469ab75c89dd3a545, type: 3}
       propertyPath: animator
       value: 
@@ -943,6 +943,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1591254385 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1440941535958988630, guid: d345d11ad068bab45bb7f8c8ceb23c57, type: 3}
+  m_PrefabInstance: {fileID: 471006576}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591254379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 387db58c50b9a94448a25bf5ee0f3ffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1612283152
 GameObject:
   m_ObjectHideFlags: 0

@@ -263,10 +263,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -325,10 +325,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 771705283}
     m_Modifications:
-    - target: {fileID: 498135492538356100, guid: d09918fe4ca9790468ff2675aadd19e1, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.9283447
-      objectReference: {fileID: 0}
     - target: {fileID: 7956901511298003414, guid: d09918fe4ca9790468ff2675aadd19e1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -421,10 +417,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8964864966176075239, guid: d09918fe4ca9790468ff2675aadd19e1, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: a0c562096d8d2b643bf0d7696d2f5a62, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
