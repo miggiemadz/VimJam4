@@ -6,28 +6,57 @@ using UnityEngine.SceneManagement;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    public Animator animator;
 
+    [HideInInspector]
     public float boomBoxDistance;
-    public BoomBox boomBox;
-
+    [Header("Player Settings")]
     public float moveSpeed;
     public float pickUpDistance = 1.0f;
-
-    public GameObject cursor;
+    [Header("Objects in the world (set in each scene)")]
     public Camera mainCamera;
+    public GameObject cursor;
+    public BoomBox boomBox;
+    public MusicBar musicBar;
+    public Image heldItemIndicator;
+    [HideInInspector]
+    public Rigidbody2D rb;
+    [Header("Objects related to the player (set in prefab)")]
+    public Animator animator;
+    public Slider healthBar;
     public GameObject thrownItemPrefab;
 
-    public bool isArrested;
+    private Item? item;
 
-    public Item? item = new(ItemType.ExplodingCat);
+    public float arrestTimer {
+        get { return healthBar.value; }
+        set {
+            healthBar.value = value; 
+            healthBar.gameObject.SetActive(value < 2);
+        }
+    }
+
+    public Item Item { 
+        get => item;
+        set 
+        { 
+            item = value;
+            if (value == null)
+            {
+                heldItemIndicator.gameObject.SetActive(false);
+            } else
+            {
+                heldItemIndicator.gameObject.SetActive(true);
+                heldItemIndicator.sprite = Item.GetSprite(value.type);
+            }
+        }
+    }
 
     Vector2 movement;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        Item = new Item(ItemType.ExplodingCat);
     }
 
 
@@ -69,7 +98,7 @@ public class PlayerBehavior : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            if (item == null)
+            if (Item == null)
             {
                 Collider2D[] itemsNearby = Physics2D.OverlapCircleAll(transform.position, pickUpDistance);
                 //Debug.Log(itemsNearby.Length);
@@ -77,7 +106,7 @@ public class PlayerBehavior : MonoBehaviour
                 {
                     if (collider.gameObject.TryGetComponent<FloorItem>(out var floorItem))
                     {
-                        item = floorItem.item;
+                        Item = floorItem.item;
                         Destroy(collider.gameObject);
                         break;
                     }
@@ -88,8 +117,8 @@ public class PlayerBehavior : MonoBehaviour
                 Vector3 thrownItemDirection = cursor.transform.position - transform.position;
                 GameObject thrownItem = Instantiate(thrownItemPrefab, transform.position, Quaternion.identity);
                 ThrownItem thrownItemScript = thrownItem.GetComponent<ThrownItem>();
-                thrownItemScript.item = item;
-                item = null;
+                thrownItemScript.item = Item;
+                Item = null;
                 thrownItemScript.direction = thrownItemDirection;
             }
         }

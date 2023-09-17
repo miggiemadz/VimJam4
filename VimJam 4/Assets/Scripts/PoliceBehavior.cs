@@ -9,6 +9,8 @@ public class PoliceBehavior : MonoBehaviour
     public BoomBox BoomBox;
     public GameObject boomBoxPrefab;
     public Animator animator;
+    public GameObject liquidPool;
+    public EnemySpawner spawner;
 
     public float enemySpeed;
 
@@ -36,8 +38,6 @@ public class PoliceBehavior : MonoBehaviour
         Vector2 boomBoxDirection = boomBoxPrefab.transform.position - transform.position;
         boomBoxDirection.Normalize();
         float boomBoxAngle = Mathf.Atan2(boomBoxDirection.x, boomBoxDirection.y) * Mathf.Rad2Deg;
-
-
 
         Vector3 finalPosition;
         if (BoomBox.boomboxOn)
@@ -99,5 +99,9 @@ public class PoliceBehavior : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         enemySpeed = 4f;
+    }
+    void OnDestroy()
+    {
+        spawner.enemiesInGame--;
     }
 }

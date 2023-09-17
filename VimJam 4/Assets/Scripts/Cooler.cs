@@ -11,6 +11,7 @@ public class Cooler : MonoBehaviour
     // Time from an item being picked up to the next one being spawned
     public float cooldown = 1.0f;
     // cooldown timer. Null if there's an item near the cooler
+    [HideInInspector]
     float? cooldownTimer = null;
 
     void FixedUpdate()
