@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -60,18 +59,16 @@ public class PlayerBehavior : MonoBehaviour
         Item = new Item(ItemType.ExplodingCat);
     }
 
+
     void Update()
     {
-        Vector3 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0;
-        cursor.transform.position = mousePos;
+        boomBoxDistance = Vector2.Distance(transform.position, boomBox.transform.position);
+
         // if the game is paused, stop everything
         if (Time.timeScale == 0.0f)
         {
             return;
         }
-        SceneChanger();
-
         animator.SetFloat("verticalMovment", movement.y);
         animator.SetFloat("horizontalMovement", Mathf.Abs(movement.x));
 
@@ -88,6 +85,16 @@ public class PlayerBehavior : MonoBehaviour
             gameObject.transform.localScale = new Vector3(-0.0858f, 0.0858f, 0.2145f);
         }
 
+        SceneChanger();
+
+        Vector3 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+        cursor.transform.position = mousePos;
+
+        if (isArrested)
+        {
+            return;
+        }
 
         if (Input.GetButtonDown("Fire1"))
         {
@@ -115,35 +122,13 @@ public class PlayerBehavior : MonoBehaviour
                 thrownItemScript.direction = thrownItemDirection;
             }
         }
-        boomBoxOnandOff();
     }
 
     void FixedUpdate()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1.0f);
-        bool isArrested = false;
-        foreach(Collider2D collider in colliders)
-        {
-            if (collider.gameObject.TryGetComponent<PoliceBehavior>(out var policeBehavior))
-            {
-                arrestTimer -= Time.fixedDeltaTime;
-                isArrested = true;
-            }
-        }
         if (isArrested)
         {
-            if (arrestTimer <= 0)
-            {
-                // TODO: Explode on death?
-                // revert the music by 10s
-                musicBar.currentMusicValue -= 10;
-                isArrested = false;
-                arrestTimer = 2f;
-                return;
-            }
-        } else
-        {
-            arrestTimer += 2 * Time.fixedDeltaTime;
+            return;
         }
         movement.Normalize();
         rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
@@ -168,17 +153,16 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
-    private void boomBoxOnandOff()
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!boomBox.boomboxOn && boomBox.boomBoxHealth == 5)
+        if (collision.CompareTag("BoomBox"))
         {
-            if (Vector2.Distance(transform.position, boomBox.transform.position) <= 2)
+            if (Input.GetKey(KeyCode.E))
             {
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    boomBox.boomboxOn = true;
-                }
+                boomBox.boomboxOn = true;
             }
         }
     }
+
+
 }
